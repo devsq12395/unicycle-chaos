@@ -2,34 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using DG.Tweening;
 
 public class M_LvlSel : MonoBehaviour {
     public static M_LvlSel I;
-	public void Awake(){ I = this; }
+    public void Awake(){ I = this; }
 
-    public GameObject go;
+    public GameObject panel;
+    public GameObject levelButtonPrefab;
+    public Sprite starEmpty, starFull;
 
-    public void setup (){
-        go.SetActive (true);
+    private Vector2 startPosition; 
+    private Vector2 offset; 
 
-        go.SetActive (false);
+    public void setup() {
+        PopulateLevelSelect();
     }
 
-    public void toggle_show (bool _isShow, int _lvl = 0){
-        if (_isShow) {
-            go.transform.position = new Vector3(Screen.width / 2, Screen.height * 1.5f, 0);
-            
-            go.SetActive(true);
-            go.transform.DOMoveY(Screen.height / 2, 0.5f).SetEase(Ease.OutBounce);
-        } else {
-            go.transform.DOMoveY(Screen.height * 1.5f, 0.5f).OnComplete(() => go_to_game(_lvl));
+    void PopulateLevelSelect() {
+        int numberOfLevels = Menu.I.LVL_COUNT;
+        startPosition = new Vector2(-182, 32);
+        offset = new Vector2(94, -122); 
+        int columns = 5;
+
+        for (int i = 0; i < numberOfLevels; i++) {
+            GameObject buttonInstance = Instantiate(levelButtonPrefab, panel.transform);
+
+            LvlBtn levelButton = buttonInstance.GetComponent<LvlBtn>();
+            levelButton.setup ();
+
+            if (levelButton != null) {
+                levelButton.SetLevel(i + 1, starEmpty, starFull);
+            }
+
+            int row = i / columns;
+            int column = i % columns;
+            buttonInstance.GetComponent<RectTransform>().anchoredPosition = new Vector2(
+                startPosition.x + column * offset.x,
+                startPosition.y + row * offset.y
+            );
         }
     }
 
-    private void go_to_game (int _lvlIndex){
-        Menu.I.go_to_game_lvl (_lvlIndex);
+    public void Show() {
+        panel.SetActive(true);
     }
 
+    public void Hide() {
+        panel.SetActive(false);
+    }
 }
