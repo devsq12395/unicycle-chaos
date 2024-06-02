@@ -24,7 +24,7 @@ public class M_LvlSel : MonoBehaviour {
             go.SetActive(true);
             go.transform.DOMoveY(Screen.height / 2, 0.5f).SetEase(Ease.OutBounce);
         } else {
-            go.transform.DOMoveY(Screen.height * 1.5f, 0.5f).OnComplete(() => btn_lvl(_lvl));
+            go.transform.DOMoveY(Screen.height * 1.5f, 0.5f).OnComplete(() => go_to_game(_lvl));
         }
     }
 
