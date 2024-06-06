@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -9,56 +10,35 @@ public class UI_GameOver : MonoBehaviour {
     public void Awake() { I = this; }
 
     public GameObject go;
+    public List<Image> i_stars;
+    public Sprite i_starEmpty, i_starFull;
 
-    public TextMeshProUGUI t_desc;
+    public TextMeshProUGUI t_title, t_desc;
 
-    public void show (){
+    public void show (bool _isWin){
         go.SetActive (true);
 
         MG.I.isGameOver = true;
         MG.I.pause_game ();
 
-        int _boos = MG.I.get_val ("Boo"),
-            _yeah = MG.I.get_val ("Yeah"),
-            _total = _yeah - _boos;
+        t_title.text = (_isWin) ? "Level Complete!" : "Level Failed!";
+        t_desc.text = $"Total Time: {MG.I.timer}";
 
-        t_desc.text = "Total Boos: " + _boos + "\nTotal Yeahs: " + _yeah + "\n\nAudience Reaction:\n" + get_audience_response (_total);
+        int _stars = 0, _index = 0;
+        float timer = MG.I.timer;
+        if (_isWin) {
+            i_stars.ForEach ((star) => {
+                if (LvlDetails.I.starReqTimes [_index] <= timer) {
+                    star.sprite = i_starFull;
+                    _stars++;
+                } else {
+                    star.sprite = i_starEmpty;
+                }
+                _index++;
+            });
 
-        ContSounds.I.play (((_total <= 10) ? "bad" : "good"));
-    }
-
-    private string get_audience_response(int _total) {
-        Dictionary<int, string[]> _responses = new Dictionary<int, string[]>() {
-            { 0, new string[] {
-                "Boo! Try harder next time!",
-                "They're throwing tomatoes at you!",
-                "I wasted my money on this circus!"
-            }},
-            { 5, new string[] {
-                "Not bad. Just meh.",
-                "I think some audience fell asleep.",
-                "Some of them just walked out lol."
-            }},
-            { 10, new string[] {
-                "Mixed reactions! Keep practicing!",
-                "The audience is intrigued, show them more!",
-                "A decent performance, but aim for greatness!"
-            }},
-            { 15, new string[] {
-                "Standing ovation! You're a circus legend!",
-                "You're like a rockstar!",
-                "You're winning hearts with your performance!"
-            }}
-        };
-
-        foreach (var _kvp in _responses) {
-            if (_total <= _kvp.Key) {
-                int index = UnityEngine.Random.Range(0, _kvp.Value.Length);
-                return _kvp.Value[index];
-            }
+            PlayerPrefs.SetInt ($"Level{MG.I.lvlNum}Stars", _stars);
         }
-
-        return "Standing ovation! You're a circus legend!";
     }
 
     public void btn_try_again (){

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 public class LvlBtn : MonoBehaviour {
+    public int lvl;
     public TextMeshProUGUI levelText;
     public List<Image> stars;
 
@@ -16,6 +17,7 @@ public class LvlBtn : MonoBehaviour {
     }
 
     public void SetLevel(int level, Sprite starEmpty, Sprite starFull) {
+        lvl = level;
         levelText.text = level.ToString();
 
         int starCount = PlayerPrefs.GetInt("Level" + level + "Stars", 0);
@@ -26,6 +28,6 @@ public class LvlBtn : MonoBehaviour {
     }
 
     public void OnClick() {
-        
+        Menu.I.go_to_game_lvl (lvl);
     }
 }

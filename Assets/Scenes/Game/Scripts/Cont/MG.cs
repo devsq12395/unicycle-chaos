@@ -22,20 +22,22 @@ public class MG : MonoBehaviour {
 
     public bool isPaused, isGameOver;
 
-    public float timeLeft, booCd, BOO_CD_DEF;
+    public int lvlNum;
+    public float timer, booCd, BOO_CD_DEF;
 
     void Start() {
-        Application.targetFrameRate = 60;
         BOO_CD_DEF = 0.2f;
 
         ratings = new List<Rating> ();
-        timeLeft = 60;
 
         if (PlayerPrefs.GetInt ("Tutorial") == 0) {
             UI_Main.I.goTut.SetActive (true);
             PlayerPrefs.SetInt ("Tutorial", 1);
             pause_game ();
         }
+
+        lvlNum = PlayerPrefs.GetInt ("Lvl");
+        ContLvl.I.create_lvl ();
     }
 
     void Update (){
@@ -72,7 +74,7 @@ public class MG : MonoBehaviour {
 
     public void game_over (){
         pause_game ();
-        UI_GameOver.I.show ();
+        UI_GameOver.I.show (false);
     }
 
     public void pause_game (){
@@ -98,11 +100,7 @@ public class MG : MonoBehaviour {
     }
 
     private void game_timer (){
-        timeLeft -= Time.deltaTime;
-
-        if (timeLeft <= 0) {
-            MG.I.game_over ();
-        }
+        timer += Time.deltaTime;
     }
 
     private void boo_cd (){

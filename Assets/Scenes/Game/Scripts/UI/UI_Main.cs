@@ -13,7 +13,7 @@ public class UI_Main : MonoBehaviour {
 
     void Update (){
         update_score ();
-        update_timer (MG.I.timeLeft);
+        update_timer (MG.I.timer);
     }
 
     public void update_score() {
