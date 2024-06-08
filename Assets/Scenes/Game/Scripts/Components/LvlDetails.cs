@@ -9,5 +9,5 @@ public class LvlDetails : MonoBehaviour {
 	public static LvlDetails I;
     public void Awake() { I = this; }
     
-	public Dictionary<int, int> starReqTimes;
+	public List<int> starReqTimes;
 }

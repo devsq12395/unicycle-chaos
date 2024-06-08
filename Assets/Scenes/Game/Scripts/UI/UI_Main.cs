@@ -9,16 +9,10 @@ public class UI_Main : MonoBehaviour {
     public void Awake() { I = this; }
 
     public GameObject goTut;
-    public TextMeshProUGUI t_boo, t_yeah, t_timer;
+    public TextMeshProUGUI t_timer;
 
     void Update (){
-        update_score ();
         update_timer (MG.I.timer);
-    }
-
-    public void update_score() {
-        t_boo.text = $"Boo: {MG.I.get_val ("Boo")}";
-        t_yeah.text = $"Yeah: {MG.I.get_val ("Yeah")}";
     }
 
     public void update_timer (float _secLeft){

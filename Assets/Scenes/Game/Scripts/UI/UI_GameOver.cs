@@ -27,13 +27,13 @@ public class UI_GameOver : MonoBehaviour {
         int _stars = 0, _index = 0;
         float timer = MG.I.timer;
         if (_isWin) {
-            i_stars.ForEach ((star) => {
+            LvlDetails.I.starReqTimes.ForEach ((reqTime) => {
                 if (LvlDetails.I.starReqTimes [_index] <= timer) {
-                    star.sprite = i_starFull;
                     _stars++;
-                } else {
-                    star.sprite = i_starEmpty;
                 }
+            });
+            i_stars.ForEach ((star) => {
+                star.sprite = (_stars >= _index + 1) ? i_starFull : i_starEmpty;
                 _index++;
             });
 
