@@ -15,6 +15,7 @@ public class Menu : MonoBehaviour {
         Application.targetFrameRate = 60;
 
         PlayerPrefs.SetInt ("Tutorial", 0);
+        PlayerPrefs.SetInt ("LvlCount", LVL_COUNT);
 
         M_LvlSel.I.setup ();
     }

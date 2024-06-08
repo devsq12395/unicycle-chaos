@@ -408,7 +408,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8080133117191647607}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8434770273505944222}
+        m_TargetAssemblyTypeName: LvlBtn, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8434770273505944222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,6 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de680fda7824baf4aa827518f1b3c45f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lvl: 0
   levelText: {fileID: 5985909571966681222}
   stars:
   - {fileID: 2435723375181819015}

@@ -22,7 +22,12 @@ public class UI_GameOver : MonoBehaviour {
         MG.I.pause_game ();
 
         t_title.text = (_isWin) ? "Level Complete!" : "Level Failed!";
-        t_desc.text = $"Total Time: {MG.I.timer}";
+
+        int _m = Mathf.FloorToInt(MG.I.timer / 60);
+        int _s = Mathf.FloorToInt(MG.I.timer % 60);
+        string _res = string.Format("{0}:{1:00}", _m, _s);
+
+        t_desc.text = $"Total Time: {_res}";
 
         int _stars = 0, _index = 0;
         float timer = MG.I.timer;
@@ -43,5 +48,19 @@ public class UI_GameOver : MonoBehaviour {
 
     public void btn_try_again (){
         MG.I.change_scene ("Game");
+    }
+
+    public void btn_home (){
+        MG.I.change_scene ("Menu");
+    }
+
+    public void btn_next (){
+        int lvlCount = PlayerPrefs.GetInt ("LvlCount");
+        if (MG.I.lvlNum < lvlCount) {
+            PlayerPrefs.SetInt ("Lvl", MG.I.lvlNum + 1);
+            MG.I.change_scene ("Game");
+        } else {
+            MG.I.change_scene ("Menu");
+        }
     }
 }
