@@ -305,6 +305,13 @@ MonoBehaviour:
   - {fileID: 1629928209044307557, guid: 3e9d9f2d5ec9c008ab4a107176c1d447, type: 3}
   - {fileID: 7170962723466019919, guid: 1b0fd8821b72c524e8b7337b29ee2136, type: 3}
   - {fileID: 7053354946260114159, guid: c43ad28f4ae63a24a8d6074681fc9cf2, type: 3}
+  - {fileID: 2036947927093819971, guid: 0639d951ae50f539bb6a5ab29fdd3db0, type: 3}
+  - {fileID: 8551021622129876426, guid: dbe78633f145d5c86a439abba09f6bb1, type: 3}
+  - {fileID: 4350239527781145639, guid: 9be41e54ed37ac5ccbc5acb14368d74a, type: 3}
+  - {fileID: 7833131217110878178, guid: 987446862543425f885121cdaf107c9c, type: 3}
+  - {fileID: 7053354946260114159, guid: c43ad28f4ae63a24a8d6074681fc9cf2, type: 3}
+  - {fileID: 7053354946260114159, guid: c43ad28f4ae63a24a8d6074681fc9cf2, type: 3}
+  - {fileID: 7053354946260114159, guid: c43ad28f4ae63a24a8d6074681fc9cf2, type: 3}
 --- !u!1 &87096094
 GameObject:
   m_ObjectHideFlags: 0
@@ -2682,7 +2689,7 @@ GameObject:
   - component: {fileID: 980202189}
   m_Layer: 6
   m_Name: wheel
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
