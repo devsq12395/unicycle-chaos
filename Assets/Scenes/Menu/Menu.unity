@@ -548,6 +548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a22a37df4513241ae54f5bffe4f734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goLvlSel: {fileID: 0}
   LVL_COUNT: 0
 --- !u!4 &1139903823
 Transform:
@@ -723,10 +724,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 761034459}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1139903822}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: btn_play
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

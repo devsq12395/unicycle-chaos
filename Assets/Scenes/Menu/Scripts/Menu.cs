@@ -8,6 +8,7 @@ public class Menu : MonoBehaviour {
     public static Menu I;
 	public void Awake(){ I = this; }
 
+    public GameObject goLvlSel;
     public int LVL_COUNT;
 
     void Start (){
@@ -18,6 +19,8 @@ public class Menu : MonoBehaviour {
         PlayerPrefs.SetInt ("LvlCount", LVL_COUNT);
 
         M_LvlSel.I.setup ();
+
+        ContAPI.I.show_ad_midroll ();
     }
 
     private void setup_player_prefs (){
@@ -30,6 +33,11 @@ public class Menu : MonoBehaviour {
         }
 
         PlayerPrefs.SetInt ("v.1.0", 1);
+    }
+
+    public void btn_play (){
+        goLvlSel.SetActive (true);
+        ContAPI.I.show_ad_midroll ();
     }
 
     public void go_to_game_lvl (int _lvl){

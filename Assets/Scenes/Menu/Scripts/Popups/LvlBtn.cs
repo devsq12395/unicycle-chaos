@@ -28,6 +28,7 @@ public class LvlBtn : MonoBehaviour {
     }
 
     public void OnClick() {
+        GameDistribution.Instance.ShowAd();
         Menu.I.go_to_game_lvl (lvl);
     }
 }
