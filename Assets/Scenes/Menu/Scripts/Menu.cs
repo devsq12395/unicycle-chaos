@@ -21,10 +21,12 @@ public class Menu : MonoBehaviour {
     }
 
     private void setup_player_prefs (){
-        if (PlayerPrefs.GetInt ("v.1.0") == 0) return;
+        if (PlayerPrefs.GetInt ("v.1.1") == 0) return;
 
         for (int i = 1; i < LVL_COUNT; i++){
             PlayerPrefs.SetInt($"Level{i}Stars", 0);
+            PlayerPrefs.SetInt("BGM", 1);
+            PlayerPrefs.SetInt("SFX", 1);
         }
 
         PlayerPrefs.SetInt ("v.1.0", 1);
@@ -32,6 +34,6 @@ public class Menu : MonoBehaviour {
 
     public void go_to_game_lvl (int _lvl){
         PlayerPrefs.SetInt ("Lvl", _lvl);
-        SceneManager.LoadScene("Game", LoadSceneMode.Single);
+        MasterScene.I.change_main_scene ("Game");
     }
 }

@@ -112,6 +112,7 @@ public class MG : MonoBehaviour {
     }
 
     public void change_scene (string _scene){
-        SceneManager.LoadScene(_scene, LoadSceneMode.Single);
+        //SceneManager.LoadScene(_scene, LoadSceneMode.Single);
+        MasterScene.I.change_main_scene (_scene);
     }
 }
