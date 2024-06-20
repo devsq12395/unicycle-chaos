@@ -40,6 +40,10 @@ public class Menu : MonoBehaviour {
         ContAPI.I.show_ad_midroll ();
     }
 
+    public void btn_settings (){
+        P_Settings.I.show (true);
+    }
+
     public void go_to_game_lvl (int _lvl){
         PlayerPrefs.SetInt ("Lvl", _lvl);
         MasterScene.I.change_main_scene ("Game");
