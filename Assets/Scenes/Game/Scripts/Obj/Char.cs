@@ -149,5 +149,7 @@ public class Char : MonoBehaviour {
         charAngVel = 0f;
         wRb.velocity = Vector2.zero;
         cRb.velocity = Vector2.zero;
+
+        MG.I.timer = 0;
     }
 }

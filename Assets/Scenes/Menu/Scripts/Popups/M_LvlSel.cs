@@ -19,7 +19,7 @@ public class M_LvlSel : MonoBehaviour {
     }
 
     void PopulateLevelSelect() {
-        int numberOfLevels = Menu.I.LVL_COUNT;
+        int numberOfLevels = MasterScene.I.LVL_COUNT; Debug.Log (MasterScene.I.LVL_COUNT);
         startPosition = new Vector2(-182, 32);
         offset = new Vector2(94, -122); 
         int columns = 5;

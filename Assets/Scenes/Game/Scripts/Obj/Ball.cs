@@ -5,11 +5,11 @@ using UnityEngine;
 public class Ball : MonoBehaviour {
 
     private Rigidbody2D m_rb;
-    public float JUMP_HEIGHT;
+    public float JUMP_HEIGHT, jumpHeightCustom;
  
     private void Start() {
         m_rb = GetComponent<Rigidbody2D>();
-        JUMP_HEIGHT = 550f;
+        JUMP_HEIGHT = (jumpHeightCustom != 0) ? jumpHeightCustom : 550f;
     }
  
     private void OnTriggerEnter2D(Collider2D _collision) {

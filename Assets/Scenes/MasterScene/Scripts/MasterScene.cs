@@ -10,7 +10,15 @@ public class MasterScene : MonoBehaviour {
 
     public string curMainScene = "";
 
+    public int LVL_COUNT;
+
     void Start(){
+        LVL_COUNT = 10;
+        PlayerPrefs.SetInt ("Tutorial", 0);
+        PlayerPrefs.SetInt ("LvlCount", LVL_COUNT);
+
+        setup_player_prefs ();
+
         add_scene ("_GlobalScripts");
         change_main_scene ("Menu");
 
@@ -19,6 +27,19 @@ public class MasterScene : MonoBehaviour {
 
     void Update(){
         
+    }
+
+    private void setup_player_prefs (){
+        if (PlayerPrefs.GetInt ("v.1.2") == 1) return;
+
+        for (int i = 1; i < LVL_COUNT; i++){
+            PlayerPrefs.SetInt($"Level{i}Stars", 0);
+        }
+
+        PlayerPrefs.SetInt("BGM", 1);
+        PlayerPrefs.SetInt("SFX", 1);
+
+        PlayerPrefs.SetInt ("v.1.2", 1);
     }
 
     public void change_main_scene (string _scene) {

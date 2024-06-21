@@ -100,6 +100,7 @@ public class MG : MonoBehaviour {
     }
 
     private void game_timer (){
+        if (isPaused || Char.I.wRb.velocity.x == 0) return;
         timer += Time.deltaTime;
     }
 
