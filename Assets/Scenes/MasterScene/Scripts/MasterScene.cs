@@ -56,6 +56,17 @@ public class MasterScene : MonoBehaviour {
         SceneManager.UnloadSceneAsync (_scene);
     }
 
+    public string[] get_loaded_scenes (){
+        int loadedSceneCount = SceneManager.sceneCount;
+        string[] loadedSceneNames = new string[loadedSceneCount];
+
+        for (int i = 0; i < loadedSceneCount; i++) {
+            loadedSceneNames[i] = SceneManager.GetSceneAt(i).name;
+        }
+
+        return loadedSceneNames;
+    }
+
     public void switch_camera(string _cameraName) {
         Camera[] cameras = Camera.allCameras;
         foreach (Camera camera in cameras) {

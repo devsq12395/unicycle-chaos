@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class P_Settings : MonoBehaviour {
@@ -11,7 +13,7 @@ public class P_Settings : MonoBehaviour {
         set_text ();
     }
 
-    public GameObject go;
+    public GameObject go, goBtnsMenu, goBtnsGame;
     public AudioSource sourceSound, sourceMusic;
     public TextMeshProUGUI tSound, tMusic;
 
@@ -51,9 +53,23 @@ public class P_Settings : MonoBehaviour {
 
     public void show (bool _isShow){
         go.SetActive (_isShow);
+        Time.timeScale = (_isShow) ? 0f : 1f;
 
-        if (!_isShow && Time.timeScale == 0) {
-            Time.timeScale = 1f;
+        if (_isShow) {
+            ContAPI.I.show_ad_midroll ();
+
+            string[] _scenes = MasterScene.I.get_loaded_scenes ();
+
+            bool _isMainMenu = _scenes.Contains ("Menu");
+
+            goBtnsMenu.SetActive (_isMainMenu);
+            goBtnsGame.SetActive (!_isMainMenu);
         }
+    }
+
+    public void btn_home (){
+        ContAPI.I.show_ad_midroll ();
+        MasterScene.I.change_main_scene ("Menu");
+        show (false);
     }
 }

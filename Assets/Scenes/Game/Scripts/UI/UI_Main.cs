@@ -29,4 +29,8 @@ public class UI_Main : MonoBehaviour {
         goTut.SetActive (false);
         MG.I.resume_game ();
     }
+
+    public void btn_settings (){
+        P_Settings.I.show (true);
+    }
 }
