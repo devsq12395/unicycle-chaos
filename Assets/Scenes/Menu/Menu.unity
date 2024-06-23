@@ -168,7 +168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goLvlSel: {fileID: 0}
-  LVL_COUNT: 0
 --- !u!1 &138037834
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,8 +440,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 10.299988, y: -219.63}
-  m_SizeDelta: {x: 596.53, y: 265.21997}
+  m_AnchoredPosition: {x: 7.51, y: -206}
+  m_SizeDelta: {x: 708.51, y: 368.88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &450096298
 MonoBehaviour:
@@ -728,7 +727,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goLvlSel: {fileID: 761034459}
-  LVL_COUNT: 0
 --- !u!4 &1139903823
 Transform:
   m_ObjectHideFlags: 0

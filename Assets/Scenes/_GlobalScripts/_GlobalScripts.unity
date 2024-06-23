@@ -717,7 +717,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9962ea115e406744eaaebdf14d825c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 278660100}
+  sourceSound: {fileID: 278660100}
+  sourceMusic: {fileID: 1610191669}
+  isForcedMute: 0
   boo1: {fileID: 8300000, guid: 8c1b3bf236aa1e14f9f0f18fb167ce2e, type: 3}
   boo2: {fileID: 8300000, guid: bab92fd2e811ae5498210ceeec14d37c, type: 3}
   yea1: {fileID: 8300000, guid: 4041f6075cdd21a4cb2e2359710c5fda, type: 3}
@@ -725,6 +727,8 @@ MonoBehaviour:
   bad: {fileID: 8300000, guid: a9dfc16586082d447bf2a11c807528bf, type: 3}
   good: {fileID: 8300000, guid: ca997d213b494d2408a5e7f948b06d43, type: 3}
   jump: {fileID: 8300000, guid: 70ce2fd1be9a2494f95fb1f85a091f8b, type: 3}
+  click: {fileID: 8300000, guid: 7cf807e01087f1c41a39086526f16e0c, type: 3}
+  win: {fileID: 8300000, guid: 65dd29f4505813545bacaf7c4521d923, type: 3}
 --- !u!1 &1610191667
 GameObject:
   m_ObjectHideFlags: 0

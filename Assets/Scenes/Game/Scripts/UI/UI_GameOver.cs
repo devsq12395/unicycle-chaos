@@ -22,6 +22,7 @@ public class UI_GameOver : MonoBehaviour {
         MG.I.pause_game ();
 
         t_title.text = (_isWin) ? "Level Complete!" : "Level Failed!";
+        if (_isWin) ContSounds.I.play ("win");
 
         int _m = Mathf.FloorToInt(MG.I.timer / 60);
         int _s = Mathf.FloorToInt(MG.I.timer % 60);

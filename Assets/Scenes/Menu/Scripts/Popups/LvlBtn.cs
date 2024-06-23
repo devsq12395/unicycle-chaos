@@ -28,6 +28,7 @@ public class LvlBtn : MonoBehaviour {
     }
 
     public void OnClick() {
+        ContSounds.I.play ("click");
         ContAPI.I.show_ad_midroll ();
         Menu.I.go_to_game_lvl (lvl);
     }

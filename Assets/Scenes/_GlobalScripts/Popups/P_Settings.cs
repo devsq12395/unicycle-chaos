@@ -22,11 +22,15 @@ public class P_Settings : MonoBehaviour {
     }
 
     public void on_load (){
+        sourceSound = ContSounds.I.sourceSound;
+        sourceMusic = ContSounds.I.sourceMusic;
+
         sourceSound.mute = (PlayerPrefs.GetInt("SFX") != 1);
         sourceMusic.mute = (PlayerPrefs.GetInt("BGM") != 1);
     }
 
     public void btn_toggle (string _type){
+        ContSounds.I.play ("click");
         bool _value = false;
         switch (_type){
             case "sound":

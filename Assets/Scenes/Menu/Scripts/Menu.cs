@@ -16,11 +16,13 @@ public class Menu : MonoBehaviour {
     }
 
     public void btn_play (){
+        ContSounds.I.play ("click");
         goLvlSel.SetActive (true);
         ContAPI.I.show_ad_midroll ();
     }
 
     public void btn_settings (){
+        ContSounds.I.play ("click");
         P_Settings.I.show (true);
     }
 
