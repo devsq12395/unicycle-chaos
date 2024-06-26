@@ -3,21 +3,31 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MultiTouchInputManager : MonoBehaviour
-{
+public class MultiTouchInputManager : MonoBehaviour {
+    public static MultiTouchInputManager I;
+    public void Awake(){ I = this; }
+    
     public Button leftButton;
     public Button rightButton;
     public Button jumpButton;
 
     private HashSet<int> activeTouches = new HashSet<int>();
 
+    private Char character;
+
+    void Start()
+    {
+        character = Char.I;
+        if (character == null)
+        {
+            Debug.LogError("Char script is not found.");
+        }
+    }
+
     void Update()
     {
-        Debug.Log ("111");
-		Debug.Log("Touch Count: " + Input.touchCount);
-		foreach (Touch touch in Input.touches)
+        foreach (Touch touch in Input.touches)
         {
-			Debug.Log ("222");
             if (touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
             {
                 CheckButtonTouch(touch);
@@ -35,19 +45,19 @@ public class MultiTouchInputManager : MonoBehaviour
         {
             Debug.Log("Left button pressed");
             activeTouches.Add(touch.fingerId);
-            // Handle left button pressed logic
+            character.MoveLeft(); // Call the method to move the character left
         }
         else if (IsTouchingButton(touch, rightButton))
         {
             Debug.Log("Right button pressed");
             activeTouches.Add(touch.fingerId);
-            // Handle right button pressed logic
+            character.MoveRight(); // Call the method to move the character right
         }
         else if (IsTouchingButton(touch, jumpButton))
         {
             Debug.Log("Jump button pressed");
             activeTouches.Add(touch.fingerId);
-            // Handle jump button pressed logic
+            character.Jump(); // Call the method to make the character jump
         }
     }
 

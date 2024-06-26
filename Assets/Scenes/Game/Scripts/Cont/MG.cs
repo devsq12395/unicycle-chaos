@@ -32,9 +32,12 @@ public class MG : MonoBehaviour {
 
         if (PlayerPrefs.GetInt ("Tutorial") == 0) {
             UI_Main.I.goTut.SetActive (true);
+            UI_Tutorial.I.check_text ();
             PlayerPrefs.SetInt ("Tutorial", 1);
             pause_game ();
         }
+
+        UI_MobileCont.I.check_buttons ();
 
         lvlNum = PlayerPrefs.GetInt ("Lvl");
         ContLvl.I.create_lvl ();
