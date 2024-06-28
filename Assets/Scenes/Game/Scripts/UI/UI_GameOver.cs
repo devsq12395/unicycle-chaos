@@ -48,14 +48,17 @@ public class UI_GameOver : MonoBehaviour {
     }
 
     public void btn_try_again (){
+        ContAPI.I.show_ad_midroll ();
         MG.I.change_scene ("Game");
     }
 
     public void btn_home (){
+        ContAPI.I.show_ad_midroll ();
         MG.I.change_scene ("Menu");
     }
 
     public void btn_next (){
+        ContAPI.I.show_ad_midroll ();
         int lvlCount = PlayerPrefs.GetInt ("LvlCount");
         if (MG.I.lvlNum < lvlCount) {
             PlayerPrefs.SetInt ("Lvl", MG.I.lvlNum + 1);

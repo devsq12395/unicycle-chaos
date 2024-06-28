@@ -12,34 +12,25 @@ public class DeviceDetection : MonoBehaviour
 
     void Start()
     {
-        // Check if running on WebGL and not in the editor
-        #if UNITY_WEBGL && !UNITY_EDITOR
-            if (IsMobileDevice())
-            {
-                isMobile = true;
-                Debug.Log("Running on a mobile device");
-            }
-            else
-            {
-                isMobile = false;
-                Debug.Log("Running on a desktop device");
-            }
-        #else
-            Debug.Log("Not running in WebGL or running in the editor");
-            isMobile = false;
-        #endif
+#if UNITY_WEBGL && !UNITY_EDITOR
+        isMobile = IsMobileDevice();
+        Debug.Log(isMobile ? "Running on a mobile device" : "Running on a desktop device");
+#else
+        Debug.Log("Not running in WebGL or running in the editor");
+        isMobile = false;
+#endif
     }
 
     bool IsMobileDevice()
     {
-        // Check platform using Application.platform
-        switch (Application.platform)
+        // Basic screen size check (can be adjusted as needed)
+        // Typically, mobile devices have smaller screen sizes
+        if (Screen.width <= 1024 || Screen.height <= 768)
         {
-            case RuntimePlatform.Android:
-            case RuntimePlatform.IPhonePlayer:
-                return true;
-            default:
-                return false;
+            return true;
         }
+
+        // Further checks could include specific aspect ratio checks if needed
+        return false;
     }
 }

@@ -41,6 +41,8 @@ public class MG : MonoBehaviour {
 
         lvlNum = PlayerPrefs.GetInt ("Lvl");
         ContLvl.I.create_lvl ();
+
+        Time.timeScale = 1;
     }
 
     void Update (){
@@ -76,29 +78,23 @@ public class MG : MonoBehaviour {
     }
 
     public void game_over (){
-        pause_game ();
+        pause_game (true);
         UI_GameOver.I.show (false);
     }
 
-    public void pause_game (){
+    public void pause_game (bool _timeScaleOff = false){
         Rigidbody2D[] rigidbodies = FindObjectsOfType<Rigidbody2D>();
         foreach (Rigidbody2D rb in rigidbodies) { 
             rb.velocity = Vector3.zero;
             rb.angularVelocity = 0;
-            rb.isKinematic = true;
         }
         isPaused = true;
+
+        if (_timeScaleOff) Time.timeScale = 0;
     }
 
     public void resume_game (){
-        Rigidbody2D[] rigidbodies = FindObjectsOfType<Rigidbody2D>();
-        foreach (Rigidbody2D rb in rigidbodies) {
-            if (rb.CompareTag("kinematic")) {
-                continue;
-            }
-
-            rb.isKinematic = false;
-        }
+        Time.timeScale = 1;
         isPaused = false;
     }
 

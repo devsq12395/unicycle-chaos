@@ -108,6 +108,14 @@ public class Char : MonoBehaviour {
                 Jump ();
             }
         }
+
+        if (wRb.velocity.x != 0 && char_is_on_land ()) {
+            if (!whlSoundSource.isPlaying) {
+                whlSoundSource.Play ();
+            }
+        } else {
+            whlSoundSource.Stop ();
+        }
     }
 
     private void attach_char() {
